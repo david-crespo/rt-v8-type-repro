@@ -5,6 +5,20 @@ To run this example:
 - `npm install` or `yarn`
 - `npm run start` or `yarn start`
 
+## Update: Fix for the below issue
+
+Tanner explained [here](https://github.com/TanStack/react-table/discussions/3824#discussioncomment-2604393) how to do this. There's no need to single out the `Row` generic, just pass the whole thing. See the [`fix`](https://github.com/david-crespo/rt-v8-type-repro/compare/fix) branch to see the change in context.
+
+```ts
+export type TableProps<TGenerics> = {
+  instance: TableInstance<TGenerics>;
+};
+
+export function Table<TGenerics>({ instance }: TableProps<TGenerics>) {
+  return ( ... )
+}
+```
+
 ## Type error
 
 It seems this is not allowed:
