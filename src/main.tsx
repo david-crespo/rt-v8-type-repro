@@ -46,11 +46,11 @@ const defaultData: Person[] = [
   },
 ];
 
-export type TableProps<D> = {
-  instance: TableInstance<{ Row: D }>;
+export type TableProps<TGenerics> = {
+  instance: TableInstance<TGenerics>;
 };
 
-export function Table<D>({ instance }: TableProps<D>) {
+export function Table<TGenerics>({ instance }: TableProps<TGenerics>) {
   return (
     <table {...instance.getTableProps()}>
       <thead>
