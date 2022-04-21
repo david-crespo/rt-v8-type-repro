@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 
-import type { TableInstance } from "@tanstack/react-table";
+import type { Cell, TableInstance } from "@tanstack/react-table";
 import {
   createTable,
   getCoreRowModelSync,
@@ -90,6 +90,8 @@ export function Table<TGenerics>({ instance }: TableProps<TGenerics>) {
 
 const table = createTable<{ Row: Person }>();
 
+const Add5Cell = ({ value }: Cell<{ Value: number }>) => value + 5;
+
 const defaultColumns = table.createColumns([
   table.createGroup({
     header: "Name",
@@ -114,6 +116,7 @@ const defaultColumns = table.createColumns([
       table.createDataColumn("age", {
         header: () => "Age",
         footer: (props) => props.column.id,
+        cell: Add5Cell,
       }),
       table.createGroup({
         header: "More Info",
